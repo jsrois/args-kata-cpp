@@ -23,6 +23,7 @@ TEST_CASE("CommandLineParser","[unit]") {
   Rule
       verboseRule={"v", "verbose", false, "Displays messages during processing"},
       inputRule={"i", "input-file", "Input File to be processed"};
+
   Schema schema = {verboseRule,inputRule};
 
   const char * m_argv[] = {"./myApp","-v","--input-file=input.pdf"};

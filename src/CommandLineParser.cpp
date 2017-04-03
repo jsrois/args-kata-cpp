@@ -18,11 +18,14 @@ std::string CommandLineParser::getParameter(const std::string &name) const {
   return std::string();
 }
 
+// production constructor
+CommandLineParser::CommandLineParser() :
+CommandLineParser(new InputSplitter,new OptionSet)
+{
+
+}
 CommandLineParser::CommandLineParser(InputSplitter* splitter, OptionSet* optionSet) {
   // TODO fix this crap or Acceptance tests will crash
   this->splitter = splitter;
   this->optionSet = optionSet;
-}
-CommandLineParser::CommandLineParser() {
-
 }

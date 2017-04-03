@@ -8,9 +8,9 @@
 #include "Schema.h"
 class OptionSet {
  public:
-  virtual void add(Rule) = 0;
-  virtual void setFlag(std::string name) = 0;
-  virtual void setParameter(std::string name, std::string value) = 0;
+  virtual void add(Rule);
+  virtual void setFlag(std::string name);
+  virtual void setParameter(std::string name, std::string value);
 };
 
 #endif //ARGS_KATA_OPTIONSSET_H

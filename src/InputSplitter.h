@@ -10,7 +10,7 @@
 class InputSplitter {
  public:
   virtual std::vector<std::vector<std::string>>
-    split(std::vector<std::string> input) = 0;
+    split(std::vector<std::string> input);
 
 };
 

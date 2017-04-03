@@ -10,9 +10,9 @@ Rule::Rule(std::string abbrev, std::string name, bool defaultValue, std::string 
 
 Rule::Rule(std::string abbrev, std::string name, std::string info)
 {
-  abbrev = abbrev;
-  name = name;
-  info = info;
+  this->abbrev = abbrev;
+  this->name = name;
+  this->info = info;
 }
 bool Rule::operator==(const Rule &lhs) const {
   // more than enough
