@@ -3,6 +3,7 @@
 //
 
 #include <catch/catch.hpp>
+#include <CommandLineParser.h>
 using namespace std::string_literals;
 
 SCENARIO("the specified flags and parameters should be parsed from CLI","[acceptance]") {
@@ -21,6 +22,6 @@ SCENARIO("the specified flags and parameters should be parsed from CLI","[accept
   }
   THEN("we should be able to retrieve the provided configuration") {
     CHECK(parser.getFlag("verbose"));
-    CHECK(parser.getParam("input-file") == "input.pdf"s);
+    CHECK(parser.getParameter("input-file") == "input.pdf"s);
   }
 }
