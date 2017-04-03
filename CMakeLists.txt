@@ -1,17 +1,11 @@
 cmake_minimum_required(VERSION 3.7)
-project(default_name)
-
-#if (PROJECT_NAME MATCHES default_name)
-#    message(FATAL_ERROR "Please, change the project name and remove this check")
-#endif()
+project(args_kata)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(source_files
-        src/sample.h)
+set(source_files)
 set(test_files
-        test/main.test.cpp
-        test/sample.test.cpp)
+        test/main.test.cpp)
 
 add_executable(unit_tests
         ${source_files}
