@@ -6,22 +6,34 @@
 #include <algorithm>
 using namespace std;
 
+
+
 vector<vector<string>> InputSplitter::split(vector<string> tokens) {
   vector<vector<string>> segments;
-  for (const string token : tokens) {
-    string dashes = "--"s;
-    if (equal(dashes.begin(),dashes.end(),token.begin())) {
-      // remove prefix from string c++
+  for (string token : tokens) {
+    if (startsWithDoubleDash(token)) {
       string name, value;
-      name = token.substr(2);
-      auto equalsPos = name.find_first_of("=");
-      value = name.substr(equalsPos+1);
-      name = name.substr(0,equalsPos);
+      token.erase(0,2);
+      splitByEquals(token, name, value);
       segments.push_back({name,value});
-    } else if (equal(dashes.begin(),dashes.begin(),token.begin())) {
+    } else if (startsWithDash(token)) {
       auto name = token.substr(1); // remove leading dash
       segments.push_back({name});
     }
   }
   return segments;
+}
+
+void InputSplitter::splitByEquals(std::string input, std::string& name, std::string& value) const {
+  auto equalsPos = input.find_first_of("=");
+  value = input.substr(equalsPos+1);
+  name = input.substr(0,equalsPos);
+}
+
+bool InputSplitter::startsWithDash(const string &token) const {
+  return equal(DASH.begin(), DASH.begin(), token.begin());
+}
+
+bool InputSplitter::startsWithDoubleDash(const string &token) const {
+  return equal(DOUBLE_DASH.begin(), DOUBLE_DASH.end(), token.begin());
 }

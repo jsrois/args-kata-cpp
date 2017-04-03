@@ -5,13 +5,21 @@
 #ifndef ARGS_KATA_INPUTSPLITTER_H
 #define ARGS_KATA_INPUTSPLITTER_H
 
+
 #include <string>
 #include <vector>
+using namespace std::string_literals;
+static const std::string DOUBLE_DASH = "--"s;
+static const std::string DASH = "-"s;
+
 class InputSplitter {
  public:
   virtual std::vector<std::vector<std::string>>
     split(std::vector<std::string> input);
 
+  bool startsWithDoubleDash(const std::string &token) const;
+  bool startsWithDash(const std::string &token) const;
+  void splitByEquals(std::string input, std::string &name, std::string &value) const;
 };
 
 #endif //ARGS_KATA_INPUTSPLITTER_H
