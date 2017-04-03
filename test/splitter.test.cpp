@@ -12,7 +12,6 @@ TEST_CASE("Splitter","[unit]") {
 
   SECTION("separates flags and parameters from input text") {
     auto segments = splitter.split({"./myApp", "-v", "--input-file=input.pdf"});
-    CHECK_THAT(segments, VectorContains(std::vector<std::string>{"v"}));
-    CHECK_THAT(segments, VectorContains(std::vector<std::string>{"input-file","input.pdf"}));
+    CHECK_THAT(segments, Contains(decltype(segments){{"v"},{"input-file","input.pdf"}}));
   }
 }
