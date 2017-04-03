@@ -1,0 +1,19 @@
+@startuml
+
+interface CommandLineParser
+class InputSplitter
+
+CommandLineParser --> InputSplitter
+CommandLineParser --> OptionSet : "stores and updates"
+
+note left of InputSplitter
+takes input text
+and extracts flags
+and parameters
+end note
+
+
+hide circles
+hide members
+
+@enduml
