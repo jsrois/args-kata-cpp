@@ -6,24 +6,16 @@
 using namespace std;
 
 vector<vector<string>> InputSplitter::split(vector<string> tokens) {
-  vector<vector<string>> segments;
-  vector<string> currentSegment;
   for (string token : tokens) {
     if (startsWithDoubleDash(token)) {
-      if (!currentSegment.empty()) {
-        segments.push_back(currentSegment);
-        currentSegment.clear();
-      }
-      string name, value;
-      token.erase(0,2);
+      flushCurrentSegment();
+      removeLeadingDashes(token);
       auto parts = splitByEquals(token);
       segments.push_back(parts);
     } else if (startsWithDash(token)) {
-      auto name = token.substr(1);
-      if (!currentSegment.empty()) {
-        segments.push_back(currentSegment);
-        currentSegment.clear();
-      }
+      flushCurrentSegment();
+      removeLeadingDashes(token);
+      auto name = token;
       currentSegment.push_back(name);
     }
     else if (!currentSegment.empty()) {
@@ -32,11 +24,21 @@ vector<vector<string>> InputSplitter::split(vector<string> tokens) {
       currentSegment.clear();
     }
   }
-  if (!currentSegment.empty()) {
-    segments.push_back(currentSegment);
-    currentSegment.clear();
-  }
+  flushCurrentSegment();
   return segments;
+}
+
+void InputSplitter::removeLeadingDashes(string &token) {
+  while (!token.find('-')) { // returns position
+    token.erase(0,1);
+  }
+}
+
+void InputSplitter::flushCurrentSegment() {
+  if (!currentSegment.empty()) {
+        segments.push_back(currentSegment);
+        currentSegment.clear();
+      }
 }
 
 std::vector<std::string> InputSplitter::splitByEquals(std::string input) const {

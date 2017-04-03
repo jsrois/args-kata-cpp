@@ -3,18 +3,18 @@
 //
 
 #include "Schema.h"
-Rule::Rule(std::string abbrev, std::string name, bool defaultValue, std::string info) :
-  Rule(abbrev,name,info) {
+Option::Option(std::string abbrev, std::string name, bool defaultValue, std::string info) :
+  Option(abbrev,name,info) {
   this->defaultValue = defaultValue;
 }
 
-Rule::Rule(std::string abbrev, std::string name, std::string info)
+Option::Option(std::string abbrev, std::string name, std::string info)
 {
   this->abbrev = abbrev;
   this->name = name;
   this->info = info;
 }
-bool Rule::operator==(const Rule &lhs) const {
+bool Option::operator==(const Option &lhs) const {
   // more than enough
   return (lhs.abbrev == abbrev && lhs.name == name);
 }

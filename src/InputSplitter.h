@@ -21,6 +21,13 @@ class InputSplitter {
   bool startsWithDash(const std::string &token) const;
 
   std::vector<std::string> splitByEquals(std::string input) const;
+
+  std::vector<std::string> currentSegment;
+  std::vector<std::vector<std::string>> segments;
+
+    void flushCurrentSegment();
+
+    void removeLeadingDashes(std::string &token);
 };
 
 #endif //ARGS_KATA_INPUTSPLITTER_H

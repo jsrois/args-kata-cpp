@@ -21,7 +21,7 @@ TEST_CASE("CommandLineParser","[unit]") {
   When(Method(fakeOptionSet,getParameter).Using("input-file")).AlwaysReturn("input.pdf");
 
   CommandLineParser parser(&(splitterMock.get()),&(fakeOptionSet.get()));
-  Rule
+  Option
       verboseRule={"v", "verbose", false, "Displays messages during processing"},
       inputRule={"i", "input-file", "Input File to be processed"};
 

@@ -11,7 +11,7 @@ set(source_files
         src/OptionSet.h)
 
 set(test_files
-        test/main.test.cpp test/args.test.cpp test/cli.test.cpp test/splitter.test.cpp)
+        test/main.test.cpp test/args.test.cpp test/cli.test.cpp test/splitter.test.cpp test/optionset.test.cpp.cpp)
 
 add_executable(unit_tests
         ${source_files}
