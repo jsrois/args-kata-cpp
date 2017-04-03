@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(source_files)
 set(test_files
-        test/main.test.cpp)
+        test/main.test.cpp test/args.test.cpp)
 
 add_executable(unit_tests
         ${source_files}
