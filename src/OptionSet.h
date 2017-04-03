@@ -11,6 +11,8 @@ class OptionSet {
   virtual void add(Rule);
   virtual void setFlag(std::string name);
   virtual void setParameter(std::string name, std::string value);
+  virtual bool getFlag(std::string name) const;
+  virtual std::string getParameter(std::string name) const;
 };
 
 #endif //ARGS_KATA_OPTIONSSET_H

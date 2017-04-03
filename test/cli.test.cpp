@@ -16,8 +16,9 @@ TEST_CASE("CommandLineParser","[unit]") {
   });
   Mock<OptionSet> fakeOptionSet;
   Fake(Method(fakeOptionSet,add));
-  Fake(Method(fakeOptionSet,setFlag));
-  Fake(Method(fakeOptionSet,setParameter));
+  Fake(Method(fakeOptionSet,setFlag));Fake(Method(fakeOptionSet,setParameter));
+  When(Method(fakeOptionSet,getFlag).Using("verbose")).AlwaysReturn(true);
+  When(Method(fakeOptionSet,getParameter).Using("input-file")).AlwaysReturn("input.pdf");
 
   CommandLineParser parser(&(splitterMock.get()),&(fakeOptionSet.get()));
   Rule
