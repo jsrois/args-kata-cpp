@@ -15,5 +15,4 @@ TEST_CASE("OptionSet","[unit]") {
         optionSet.add({"p","positive",true,"A positive default flag"});
         CHECK(optionSet.getFlag("positive"));
     }
-
 }
