@@ -19,7 +19,8 @@ class InputSplitter {
 
   bool startsWithDoubleDash(const std::string &token) const;
   bool startsWithDash(const std::string &token) const;
-  void splitByEquals(std::string input, std::string &name, std::string &value) const;
+
+  std::vector<std::string> splitByEquals(std::string input) const;
 };
 
 #endif //ARGS_KATA_INPUTSPLITTER_H
