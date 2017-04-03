@@ -12,6 +12,14 @@ TEST_CASE("Splitter","[unit]") {
 
   SECTION("separates flags and parameters from input text") {
     auto segments = splitter.split({"./myApp", "-v", "--input-file=input.pdf"});
-    CHECK_THAT(segments, Contains(decltype(segments){{"v"},{"input-file","input.pdf"}}));
+    CHECK_THAT(segments, Equals(decltype(segments){{"v"},{"input-file","input.pdf"}}));
+    segments = splitter.split({"./myApp", "--verbose", "--input-file=input.pdf"});
+    CHECK_THAT(segments, Contains(decltype(segments){{"verbose"},{"input-file","input.pdf"}}));
+//    segments = splitter.split({"./myApp", "--verbose", "-input-file","input.pdf"});
+//    CHECK_THAT(segments, Contains(decltype(segments){{"verbose"},{"input-file","input.pdf"}}));
+//    segments = splitter.split({"./myApp", "-v", "-input-file","input.pdf"});
+//    CHECK_THAT(segments, Contains(decltype(segments){{"v"},{"input-file","input.pdf"}}));
+//    segments = splitter.split({"./myApp", "--input-file=input.pdf", "-v"});
+//    CHECK_THAT(segments, Contains(decltype(segments){{"v"},{"input-file","input.pdf"}}));
   }
 }

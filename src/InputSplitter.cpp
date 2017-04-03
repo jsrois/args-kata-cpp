@@ -31,7 +31,7 @@ void InputSplitter::splitByEquals(std::string input, std::string& name, std::str
 }
 
 bool InputSplitter::startsWithDash(const string &token) const {
-  return equal(DASH.begin(), DASH.begin(), token.begin());
+  return equal(DASH.begin(), DASH.end(), token.begin());
 }
 
 bool InputSplitter::startsWithDoubleDash(const string &token) const {
