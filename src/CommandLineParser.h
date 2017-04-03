@@ -14,11 +14,14 @@ class CommandLineParser {
 
  public:
   CommandLineParser();
-  CommandLineParser(InputSplitter * splitter, OptionSet * optionsSet);
+  CommandLineParser(InputSplitter * splitter, OptionSet * optionSet);
   void addSchema(Schema schema);
   void parse(int argc, const char **argv);
   bool getFlag(const std::string& name) const;
   std::string getParameter(const std::string& name) const;
+ protected:
+  OptionSet *optionSet;
+  InputSplitter *splitter;
 };
 
 #endif //ARGS_KATA_COMMANDLINEPARSER_H
