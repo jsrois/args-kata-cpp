@@ -9,36 +9,36 @@
 // e.g. "-l -p 9300 -d /home/jsrois/logs -g this,is,a,list -d 1,2,-3,5"
 
 #include <catch/catch.hpp>
+#include <ArgsParser.h>
+using namespace std::string_literals;
 SCENARIO("Arg Parser stores and updates the program arguments according to the schema") {
   ArgsParser argsParser;
 
   GIVEN("that we have specified a schema") {
-    Schema schema = {
+    Schema schema({
         {"l","Activates logs"},
         {"p","Port number",8080},
         {"-d","Destination folder","/var/log"}
         // we skip the list arguments for now
-    };
+    });
     argsParser.setSchema(schema);
   }
 
   WHEN("we pass the actual argument list to the args parser") {
     struct {
-      int argc = 9; // C sucks, be careful when changing this number
-      const char *m_argv[9] =
-          {"-l", "-p", "9300", "-d", "/home/jsrois/logs", "-g","this,is,a,list","-d","1,2,-3,5"};
+      int argc = 5; // C sucks, be careful when changing this number
+      const char *m_argv[5] =
+          {"-l", "-p", "9300", "-d", "/home/jsrois/logs"};
       const char **argv = m_argv;
     } goodInput;
 
-    argsParser.parse(argc,argv);
+    argsParser.parse(goodInput.argc,goodInput.argv);
   }
   using namespace Catch::Matchers;
   THEN("we can ask the args parser for each of the flag values, using their names"){
-    CHECK(argsParser.get("-l"));
-    CHECK(argsParser.get<int>("-p") == 9300);
-    CHECK_THAT(argsParser.get<String>("-d"),Equals("/home/jsrois/logs"));
-    CHECK_THAT(argsParser.get<StringVector>("-g"),Equals({"this","is","a","list"}));
-    CHECK_THAT(argsParser.get<std::vector<int>>("-d"),Equals({1,2,3,4,5}));
+    CHECK(argsParser.get("-l"s));
+    CHECK(argsParser.get<int>("-p"s) == 9300);
+    CHECK_THAT(argsParser.get<String>("-d"s),Equals("/home/jsrois/logs"s));
   }
 
 
