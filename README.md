@@ -10,7 +10,7 @@ _Coding Dojo Handbook_.
 If the program is to be called with these arguments:
 
 ``` 
--l -p 8080 -d /usr/logs
+-l -p 8080 -d /usr/logs -g this,is,a,list -d 1,2,-3,5
 ```
 
 this indicates a schema with 3 flags: l, p, d. The “l” (logging) flag has no values associated with it, it is a boolean flag, True if present, False if not. the “p” (port) flag has an integer value, and the “d” (directory) flag has a string value.
@@ -20,7 +20,7 @@ If a flag mentioned in the schema is missing in the arguments, a suitable defaul
 If you are feeling ambitious, extend your code to support lists eg
 
 ```
--g this,is,a,list -d 1,2,-3,5
+
 ```
 
 So the “g” flag indicates a list of strings, [“this”, “is”, “a”, “list”]
