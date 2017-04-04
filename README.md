@@ -5,7 +5,28 @@
 > This Kata is presented in Robert C.. Martin’s book “Clean Code”, chapter 14. Also listed in Emily Bache's
 _Coding Dojo Handbook_.
 
-#### Problem Description
+## Concrete specification (Attempt #2)
+
+If the program is to be called with these arguments:
+
+``` 
+-l -p 8080 -d /usr/logs
+```
+
+this indicates a schema with 3 flags: l, p, d. The “l” (logging) flag has no values associated with it, it is a boolean flag, True if present, False if not. the “p” (port) flag has an integer value, and the “d” (directory) flag has a string value.
+
+If a flag mentioned in the schema is missing in the arguments, a suitable default value should be returned. For example “False” for a boolean, 0 for a number, and “” for a string. If the arguments given do not match the schema, it is important that a good error message is given, explaining exactly what is wrong.
+
+If you are feeling ambitious, extend your code to support lists eg
+
+```
+-g this,is,a,list -d 1,2,-3,5
+```
+
+So the “g” flag indicates a list of strings, [“this”, “is”, “a”, “list”]
+
+
+## Original Description
 
 Most of us have had to parse command-line arguments from time to time. If we don’t have a convenient utility, then we simply walk the array of strings that is passed into the main function. There are several good utilities available from various sources, but they probably don’t do exactly what we want. So let’s write another one!
 
