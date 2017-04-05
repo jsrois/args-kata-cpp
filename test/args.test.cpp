@@ -16,8 +16,8 @@ SCENARIO("Arg Parser stores and updates the program arguments according to the s
 
   GIVEN("that we have specified a schema") {
     Schema schema({
-        {"l","Activates logs"},
-        {"p","Port number",8080},
+        {"-l","Activates logs"},
+        {"-p","Port number",8080},
         {"-d","Destination folder","/var/log"}
         // we skip the list arguments for now
     });
