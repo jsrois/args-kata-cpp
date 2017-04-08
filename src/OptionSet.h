@@ -5,10 +5,14 @@
 #ifndef ARGS_KATA_OPTIONSET_H
 #define ARGS_KATA_OPTIONSET_H
 
-#include "ArgParser.h"
+
+#include "Parameter.h"
+#include <vector>
+typedef std::vector<Parameter> Schema;
 
 class OptionSet {
 public:
+    virtual ~OptionSet() = default;
     virtual void initializeFrom(Schema) {}
 };
 

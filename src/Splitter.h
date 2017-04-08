@@ -26,6 +26,7 @@ typedef std::map<string,ParameterValue> ParameterValueMap;
 
 class Splitter {
 public:
+    virtual ~Splitter() = default;
     virtual ParameterValueMap getParameterValuesFrom(string args){
         return ParameterValueMap();
     }

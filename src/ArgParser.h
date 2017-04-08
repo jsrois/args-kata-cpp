@@ -7,25 +7,26 @@
 
 
 #include <vector>
-#include "Parameter.h"
-
-typedef std::vector<Parameter> Schema;
-
-class Splitter;
-class OptionSet;
+#include "Splitter.h"
+#include "OptionSet.h"
 
 class ArgParser {
 public:
     ArgParser();
     ArgParser(Splitter *splitter, OptionSet *optionSet);
 
-    void addSchema(std::vector <Parameter> parameterSpecs);
+    void addSchema(Schema parameterSpecs);
     void parse(std::string arguments);
 
     template <typename ReturnType>
     ReturnType get(std::string name) {
         return ReturnType();
     }
+
+protected:
+    std::unique_ptr<Splitter> splitter;
+    std::unique_ptr<OptionSet> optionSet;
+
 };
 
 

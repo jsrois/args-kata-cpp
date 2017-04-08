@@ -11,8 +11,8 @@ void ArgParser::parse(std::string arguments) {
 
 }
 
-void ArgParser::addSchema(std::vector<Parameter> parameterSpecs) {
-
+void ArgParser::addSchema(Schema schema) {
+    optionSet->initializeFrom(schema);
 }
 
 ArgParser::ArgParser() :
@@ -21,6 +21,8 @@ ArgParser::ArgParser() :
 
 }
 
-ArgParser::ArgParser(Splitter *splitter, OptionSet *optionSet) {
+ArgParser::ArgParser(Splitter *splitter, OptionSet *optionSet) :
+    splitter(splitter), optionSet(optionSet)
+{
 
 }

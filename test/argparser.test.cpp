@@ -17,7 +17,7 @@ T* ptrFrom(Mock<T> &mock) {
 
 TEST_CASE("ArgParser", "[unit]") {
      SECTION("registers parameter values according to schema") {
-        Mock<Splitter> splitterStub;
+        Mock<Splitter> splitterStub;Fake(Dtor(splitterStub));
         When(Method(splitterStub,getParameterValuesFrom))
                 .Return({
                                 {"-v", true},
@@ -25,7 +25,7 @@ TEST_CASE("ArgParser", "[unit]") {
                                 {"-n", 2000}
                         });
 
-        Mock<OptionSet> optionSetMock;
+        Mock<OptionSet> optionSetMock;Fake(Dtor(optionSetMock));
         Fake(Method(optionSetMock,initializeFrom));
 
         ArgParser parser(ptrFrom(splitterStub), ptrFrom(optionSetMock));
