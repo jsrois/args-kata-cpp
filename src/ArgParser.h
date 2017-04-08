@@ -11,8 +11,14 @@
 
 typedef std::vector<Parameter> Schema;
 
+class Splitter;
+class OptionSet;
+
 class ArgParser {
 public:
+    ArgParser();
+    ArgParser(Splitter *splitter, OptionSet *optionSet);
+
     void addSchema(std::vector <Parameter> parameterSpecs);
     void parse(std::string arguments);
 

@@ -5,6 +5,8 @@
 #include <catch/catch.hpp>
 #include <fakeit/fakeit.hpp>
 #include <ArgParser.h>
+#include <OptionSet.h>
+#include <Splitter.h>
 using namespace fakeit;
 using namespace std::string_literals;
 
@@ -14,8 +16,14 @@ T* ptrFrom(Mock<T> &mock) {
 }
 
 TEST_CASE("ArgParser", "[unit]") {
-    SECTION("registers parameter values according to schema") {
+     SECTION("registers parameter values according to schema") {
         Mock<Splitter> splitterStub;
+        When(Method(splitterStub,getParameterValuesFrom))
+                .Return({
+                                {"-v", true},
+                                {"-a", 3.4f},
+                                {"-n", 2000}
+                        });
 
         Mock<OptionSet> optionSetMock;
         Fake(Method(optionSetMock,initializeFrom));

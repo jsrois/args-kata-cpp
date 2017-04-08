@@ -3,7 +3,7 @@ project(args_kata)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(source_files src/ArgParser.cpp src/ArgParser.h src/Parameter.cpp src/Parameter.h)
+set(source_files src/ArgParser.cpp src/ArgParser.h src/Parameter.cpp src/Parameter.h src/Splitter.cpp src/Splitter.h src/OptionSet.cpp src/OptionSet.h)
 set(test_files
         test/main.test.cpp test/acceptance.test.cpp test/argparser.test.cpp)
 
