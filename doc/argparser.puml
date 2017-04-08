@@ -1,0 +1,19 @@
+@startuml
+
+interface ArgParser
+class InputSplitter
+
+ArgParser --> InputSplitter
+ArgParser --> OptionSet : "stores and updates"
+
+note left of InputSplitter
+takes input text
+and extracts parameters
+and values
+end note
+
+
+hide circles
+hide members
+
+@enduml

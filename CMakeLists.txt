@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(source_files src/ArgParser.cpp src/ArgParser.h src/Parameter.cpp src/Parameter.h)
 set(test_files
-        test/main.test.cpp test/acceptance.test.cpp)
+        test/main.test.cpp test/acceptance.test.cpp test/argparser.test.cpp)
 
 add_executable(unit_tests
         ${source_files}

@@ -9,6 +9,8 @@
 #include <vector>
 #include "Parameter.h"
 
+typedef std::vector<Parameter> Schema;
+
 class ArgParser {
 public:
     void addSchema(std::vector <Parameter> parameterSpecs);
