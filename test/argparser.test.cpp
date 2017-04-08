@@ -16,17 +16,24 @@ T* ptrFrom(Mock<T> &mock) {
 }
 
 TEST_CASE("ArgParser", "[unit]") {
-     SECTION("registers parameter values according to schema") {
+    SECTION("registers parameter values according to schema") {
+        ParameterValueMap parameterValues = {
+                {"-v", true},
+                {"-a", 3.4f},
+                {"-n", 2000}
+        };
         Mock<Splitter> splitterStub;Fake(Dtor(splitterStub));
-        When(Method(splitterStub,getParameterValuesFrom))
-                .Return({
-                                {"-v", true},
-                                {"-a", 3.4f},
-                                {"-n", 2000}
-                        });
+        When(Method(splitterStub, getParameterValuesFrom))
+                .Return(parameterValues);
 
         Mock<OptionSet> optionSetMock;Fake(Dtor(optionSetMock));
         Fake(Method(optionSetMock,initializeFrom));
+        Fake(Method(optionSetMock,updateParameters));
+        When(Method(optionSetMock,get).Using("-n")).Return(2000);
+        When(Method(optionSetMock,get).Using("-a")).Return(3.4f);
+        When(Method(optionSetMock,get).Using("-v")).Return(true);
+        When(Method(optionSetMock,get).Using("-e")).Return(false);
+
 
         ArgParser parser(ptrFrom(splitterStub), ptrFrom(optionSetMock));
         Schema schema = {
@@ -45,11 +52,12 @@ TEST_CASE("ArgParser", "[unit]") {
 
         Verify(Method(splitterStub, getParameterValuesFrom)
                        .Using(commandLineArgs)).Once();
+        Verify(Method(optionSetMock, updateParameters).Using(parameterValues)).Once();
 
 
-        CHECK(parser.get<int>("-n") == 2000);
-        CHECK(parser.get<float>("-a") == 3.4f);
-        CHECK(parser.get<bool>("-v"));
-        CHECK_FALSE(parser.get<bool>("-e"));
+        CHECK(parser.get("-n") == 2000);
+        CHECK(parser.get("-a") == 3.4f);
+        CHECK(parser.get("-v") == true);
+        CHECK(parser.get("-e") == false);
     }
 }

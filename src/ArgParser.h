@@ -9,6 +9,7 @@
 #include <vector>
 #include "Splitter.h"
 #include "OptionSet.h"
+#include "GenericValue.h"
 
 class ArgParser {
 public:
@@ -18,9 +19,8 @@ public:
     void addSchema(Schema parameterSpecs);
     void parse(std::string arguments);
 
-    template <typename ReturnType>
-    ReturnType get(std::string name) {
-        return ReturnType();
+    GenericValue get(std::string name) {
+        return optionSet->get(name);
     }
 
 protected:

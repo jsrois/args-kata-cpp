@@ -7,6 +7,8 @@
 
 
 #include "Parameter.h"
+#include "Splitter.h"
+#include "GenericValue.h"
 #include <vector>
 typedef std::vector<Parameter> Schema;
 
@@ -14,6 +16,13 @@ class OptionSet {
 public:
     virtual ~OptionSet() = default;
     virtual void initializeFrom(Schema) {}
+    virtual void updateParameters(ParameterValueMap) {
+
+    }
+
+    virtual GenericValue get(string name) {
+        return GenericValue();
+    }
 };
 
 

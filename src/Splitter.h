@@ -17,6 +17,11 @@ public:
     ParameterValue(bool b) : ParameterValue(b,0,0) {}
     ParameterValue(float f) : ParameterValue(0,f,0) {}
     ParameterValue(int i) : ParameterValue(0,0,i){}
+
+    bool operator==(const ParameterValue& lhs) const {
+        return b == lhs.b && f == lhs.f && i == lhs.i;
+    }
+
     bool b;
     float f;
     int i;

@@ -8,7 +8,8 @@
 #include "OptionSet.h"
 
 void ArgParser::parse(std::string arguments) {
-
+    auto parameterValues = splitter->getParameterValuesFrom(arguments);
+    optionSet->updateParameters(parameterValues);
 }
 
 void ArgParser::addSchema(Schema schema) {

@@ -21,9 +21,9 @@ SCENARIO("Args Parser recognizes and stores parameters according to the schema")
         parser.parse("./myApp -v -a 3.4 -n 2000"s);
     }
     THEN("we can retrieve each parameter value") {
-        CHECK(parser.get<int>("-n") == 2000);
-        CHECK(parser.get<float>("-a") == 3.4f);
-        CHECK(parser.get<bool>("-v"));
-        CHECK_FALSE(parser.get<bool>("-e"));
+        CHECK(parser.get("-n") == 2000);
+        CHECK(parser.get("-a") == 3.4f);
+        CHECK(parser.get("-v") == true);
+        CHECK_FALSE(parser.get("-e") == false);
     }
 }
