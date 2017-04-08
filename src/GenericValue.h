@@ -14,12 +14,15 @@ struct GenericValue {
 
     template<typename ValueType>
     GenericValue(ValueType v) :  value(new Value_<ValueType>(v))
-    {
+    {}
+
+    bool operator !=(const GenericValue & lhs) const {
+        return !operator==(lhs);
     }
 
-    struct Value {
-        virtual ~Value() = default;
-    };
+    bool operator==(const GenericValue & lhs) const {
+        return value->operator==(*lhs.value);
+    }
 
     template <typename T>
     bool operator==(const T& t) const {
@@ -27,10 +30,20 @@ struct GenericValue {
         return ptr && ptr->value == t;
     }
 
+    struct Value {
+        virtual bool operator==(const Value&) const = 0;
+        virtual ~Value() = default;
+    };
+
     template <class ValueType>
     struct Value_ : public Value {
         Value_(ValueType value) {
             this->value = value;
+        }
+
+        bool operator==(const Value &lhs) const override {
+            const auto * ptr = dynamic_cast<const Value_<ValueType>*>(&lhs);
+            return ptr && value == ptr->value;
         }
 
         ValueType value;

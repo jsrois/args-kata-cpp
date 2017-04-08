@@ -22,6 +22,8 @@ public:
         return b == lhs.b && f == lhs.f && i == lhs.i;
     }
 
+    std::tuple<bool,float,int> u;
+
     bool b;
     float f;
     int i;

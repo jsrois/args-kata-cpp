@@ -52,7 +52,6 @@ TEST_CASE("ArgParser", "[unit]") {
         Verify(Method(splitterStub, getParameterValuesFrom).Using(commandLineArgs)).Once();
         Verify(Method(optionSetMock, updateParameters).Using(parameterValues)).Once();
 
-
         CHECK(parser.get("-n") == 2000);
         CHECK(parser.get("-a") == 3.4f);
         CHECK(parser.get("-v") == true);

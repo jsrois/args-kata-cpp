@@ -15,14 +15,13 @@ typedef std::vector<Parameter> Schema;
 class OptionSet {
 public:
     virtual ~OptionSet() = default;
-    virtual void initializeFrom(Schema) {}
-    virtual void updateParameters(ParameterValueMap) {
+    virtual void initializeFrom(Schema);
+    virtual void updateParameters(ParameterValueMap);
 
-    }
+    virtual GenericValue get(string name);
 
-    virtual GenericValue get(string name) {
-        return GenericValue();
-    }
+protected:
+    Schema schema;
 };
 
 

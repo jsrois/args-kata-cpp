@@ -15,18 +15,13 @@ class ArgParser {
 public:
     ArgParser();
     ArgParser(Splitter *splitter, OptionSet *optionSet);
-
     void addSchema(Schema parameterSpecs);
     void parse(std::string arguments);
-
-    GenericValue get(std::string name) {
-        return optionSet->get(name);
-    }
+    GenericValue get(std::string name);
 
 protected:
     std::unique_ptr<Splitter> splitter;
     std::unique_ptr<OptionSet> optionSet;
-
 };
 
 
