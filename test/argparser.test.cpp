@@ -49,8 +49,7 @@ TEST_CASE("ArgParser", "[unit]") {
         string commandLineArgs = "./myApp -v -a 3.4 -n 2000"s;
         parser.parse(commandLineArgs);
 
-        Verify(Method(splitterStub, getParameterValuesFrom)
-                       .Using(commandLineArgs)).Once();
+        Verify(Method(splitterStub, getParameterValuesFrom).Using(commandLineArgs)).Once();
         Verify(Method(optionSetMock, updateParameters).Using(parameterValues)).Once();
 
 
