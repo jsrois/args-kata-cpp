@@ -3,19 +3,28 @@
 //
 
 #include <catch/catch.hpp>
+#include <ArgParser.h>
+using namespace std::string_literals;
 
 SCENARIO("Args Parser recognizes and stores parameters according to the schema") {
-
+    ArgParser parser;
     GIVEN("We have set a valid test schema") {
-
+        parser.addSchema({
+                                 {"-v", "Activates verbosity"},
+                                 {"-n", "Number of meatballs (default 20)",20},
+                                 {"-a", "Alfa parameter (default 1.3f)", 3.2f},
+                                 {"-e", "Enables stupidity"}
+                         });
     }
 
     WHEN("We pass the command line arguments") {
-
+        parser.parse("./myApp -v -a 3.4 -n 2000"s);
     }
-
     THEN("We can access each parameter value") {
-
+        CHECK(parser.get<int>("-n") == 2000);
+        CHECK(parser.get<float>("-a") == 3.4f);
+        CHECK(parser.get<bool>("-v"));
+        CHECK_FALSE(parser.get<bool>("-e"));
     }
 
 
