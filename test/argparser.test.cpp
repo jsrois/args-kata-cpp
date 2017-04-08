@@ -5,8 +5,7 @@
 #include <catch/catch.hpp>
 #include <fakeit/fakeit.hpp>
 #include <ArgParser.h>
-#include <OptionSet.h>
-#include <Splitter.h>
+
 using namespace fakeit;
 using namespace std::string_literals;
 
