@@ -1,6 +1,11 @@
 
 # Args Kata
 
+#### Attempt 3
+
+We are leaving out the "list of parameters" test case for now
+
+
 
 > This Kata is presented in Robert C.. Martin’s book “Clean Code”, chapter 14. Also listed in Emily Bache's
 _Coding Dojo Handbook_.
