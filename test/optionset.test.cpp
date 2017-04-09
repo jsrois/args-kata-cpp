@@ -21,4 +21,11 @@ TEST_CASE("OptionSet","[unit]") {
         CHECK(optionSet.get("-a") == 3.2f);
         CHECK(optionSet.get("-e") == false);
     }
+
+    SECTION("updates parameter values") {
+        optionSet.updateParameters({{"-v",true},{"-a",5.2f}});
+        CHECK(optionSet.get("-v")==true);
+        CHECK(optionSet.get("-a") == 5.2f);
+    }
+
 }
