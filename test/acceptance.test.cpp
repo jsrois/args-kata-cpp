@@ -3,6 +3,8 @@
 //
 
 #include <catch/catch.hpp>
+#include <Schema.h>
+#include <ArgParser.h>
 
 SCENARIO("ArgsParser takes parameters from command line according to a schema") {
     ArgParser argParser;
@@ -17,8 +19,8 @@ SCENARIO("ArgsParser takes parameters from command line according to a schema") 
     WHEN("we pass the command line arguments") {
         struct {
             int argc = 4;
-            const char * args[argc] = {"./myApp","-v","-g","1.2"};
-            const char ** argv = &args[0];
+            const char * args[4] = {"./myApp","-v","-g","1.2"};
+            const char ** argv = args;
         } cli;
         argParser.parse(cli.argc, cli.argv);
     }
