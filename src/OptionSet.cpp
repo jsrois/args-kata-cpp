@@ -12,5 +12,10 @@ void OptionSet::updateParameters(ParameterValueMap parameters) {
 }
 
 GenericValue OptionSet::get(string name) {
-    return GenericValue();
+    auto param = std::find_if(begin(schema), end(schema),[&name](auto elem){
+        return elem.name == name;
+    });
+    if (param == schema.end())
+        return GenericValue();
+    return param->value;
 }
