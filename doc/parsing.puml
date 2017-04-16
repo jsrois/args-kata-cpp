@@ -1,0 +1,7 @@
+@startuml
+-> ArgParser : "./myApp -v -g 1.2"
+ArgParser -> Splitter : getParametersFrom("./myApp -v -g 1.2")
+Splitter --> ArgParser : '-v'=true, '-g'=1.2
+ArgParser -> ParameterSet : update "-v" to true
+ArgParser -> ParameterSet : update "-g" to 1.2
+@enduml

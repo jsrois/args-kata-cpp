@@ -1,0 +1,22 @@
+@startuml
+
+
+
+class ArgParser
+
+
+ArgParser --> ParameterSet
+ArgParser --> Splitter
+
+note left of Splitter
+extrae el valor para cada parámetro de
+a partir de los argumentos de entrada
+end note
+note bottom of ParameterSet
+actualiza el parámetro con el nuevo valor."
+end note
+
+hide circles
+hide members
+
+@enduml
